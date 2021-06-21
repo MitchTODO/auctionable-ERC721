@@ -3,8 +3,8 @@
 
 ## ProcurementActivityDiagram
 
-[](assets/readmePics/ProcurementActivityDiagram.png)
+[](ProcurementSmartContract/assets/readmePics/ProcurementActivityDiagram.png)
 
 ## Sequence Diagram
 
-[](assets/readmePics/ProcurementSequenceDiagram.png)
+[](ProcurementSmartContract/assets/readmePics/ProcurementSequenceDiagram.png)
