@@ -1,0 +1,21 @@
+{
+  "name": "procurementsmartcontract",
+  "version": "1.0.0",
+  "description": "ProcurementSmartContract",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MitchellT",
+  "license": "MIT",
+  "dependencies": {
+    "openzeppelin-solidity": "^2.2.0",
+    "solc": "^0.5.2",
+    "solc-js": "^0.5.2",
+    "truffle-assertions": "^0.9.1",
+    "truffle-hdwallet-provider": "^1.0.13"
+  }
+}
