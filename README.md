@@ -3,7 +3,7 @@
 
 ## Quick Start
 
-### Prerequisites
+### Pre-requisites
 
 NodeJs v14.16.1 with npm
 
