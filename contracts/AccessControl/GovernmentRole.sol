@@ -20,7 +20,7 @@ contract GovernmentRole {
 
   // Define a modifier that checks to see if msg.sender has the appropriate role
   modifier onlyGovernment() {
-     require(isGovernment(msg.sender));
+     require(isGovernment(msg.sender), "Not a Government Address");
     _;
   }
 
