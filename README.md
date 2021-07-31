@@ -19,14 +19,18 @@ Open a terminal and cd into the ProcurementSmartContract directory. Install libr
     
 ### Compiling contracts 
 
-Within the same terminal run.
+Within the same terminal & project directory run.
 
     truffle compile
+
     
-### Migrating contracts to ganache
+### Launch Ganache & Migrate the contracts 
 
-    truffle migrate -development
+    truffle migrate -development --reset
 
+### Testing the contracts
+
+    truffle test
 
 
 ## Diagrams
