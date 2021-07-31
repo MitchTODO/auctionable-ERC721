@@ -69,7 +69,7 @@ contract('Tender', accounts => {
 
         })
 
-        
+
 
     });
 })

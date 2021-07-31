@@ -50,7 +50,6 @@ contract('Tender', accounts => {
           await this.contract.addBid(0, 60,"Bid three",{from:account_four} );
 
           let top = await this.contract.getTop(0,3);
-          console.log(top);
 
           let bidInfo = await this.contract.getBidInfo(0,account_two);
 
@@ -64,7 +63,7 @@ contract('Tender', accounts => {
 
 
         it('Removing a bid',async function() {
-
+          await new Promise(resolve => setTimeout(resolve, 1000));
           await this.contract.addBid(0, 30,"Bid one",{from:account_two} );
           await this.contract.addBid(0,20,"The best bid",{from:account_three});
 
@@ -86,6 +85,7 @@ contract('Tender', accounts => {
         })
 
         it('Updating bid', async function() {
+          await new Promise(resolve => setTimeout(resolve, 1000));
           await this.contract.addBid(0,30,"Bid one",{from:account_two});
           let oldBid = await this.contract.getBidInfo(0,account_two);
 
@@ -98,22 +98,19 @@ contract('Tender', accounts => {
         })
 
         it('Pick a winner', async function() {
-          let checkClosed = await this.contract.hasClosed(0);
-          console.log("Is closed"+checkClosed);
-          await this.contract.addBid(0,20,"Best Bid",{from:account_four});
+          await new Promise(resolve => setTimeout(resolve, 1000));
 
+          await this.contract.addBid(0,20,"Best Bid",{from:account_four});
           await new Promise(resolve => setTimeout(resolve, 11000));
 
-          // check if auction is hasClosed
-          let closed = await this.contract.hasClosed(0);
-
           let top = await this.contract.getTop(0,1);
-
           await this.contract.chooseWinner(0,top[0],{from:account_one})
 
           let winner = await this.contract.getWinner(0);
           assert.equal(winner,account_four,"Incorrect winner");
 
+          let closed = await this.contract.hasClosed(0);
+          let isOpen = await this.contract.isOpen(0);
           let notSign = await this.contract.isSigned(0);
           assert.equal(notSign,false,"Token should be not signed");
 
@@ -122,19 +119,27 @@ contract('Tender', accounts => {
           let sign = await this.contract.isSigned(0);
           assert.equal(sign,true,"Token should be signed");
 
-          //await this.contract.setApprovalForAll(account_four,true,{from:account_one});
-
-          let isApproved = await this.contract.isApprovedForAll(account_one,account_four);
-          assert.equal(isApproved,true,"new owner is not approved");
-
           await this.contract.approve(account_four,0,{from:account_one});
           await this.contract.safeTransferFrom(account_one,account_four,0,{from:account_four});
 
           let checkOwner = await this.contract.ownerOf(0);
 
           assert.equal(checkOwner,account_four,"New owner is not correct");
-
         })
+
+        it('Trying a double bid', async function() {
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          try{
+            await this.contract.addBid(0, 20,"Bid one",{from:account_two} );
+            await this.contract.addBid(0, 20,"Bid one",{from:account_two} );
+          }catch(error) {
+            console.log(error);
+          }
+        })
+
+        it('Trying a ')
+
+
     });
 
 
